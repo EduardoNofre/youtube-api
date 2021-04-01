@@ -24,17 +24,17 @@ import com.google.api.services.youtube.model.Video;
 import com.google.api.services.youtube.model.VideoSnippet;
 import com.google.common.collect.Lists;
 
-public class UploadVideos {
+public class VideoService {
 
 	private final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
 
 	private final JsonFactory JSON_FACTORY = new JacksonFactory();
 
 	private YouTube youtube;
-	
+
 	private String VIDEO_FILE_FORMAT = "video/*";
 
-	public void uploadVideos() throws Exception {
+	public Video uploadVideo(File fileVideo, Video videoObjectDefiningMetadata,VideoSnippet snippet) throws Exception {
 
 		try {
 			AuthorizeUtil authorizeUtil = new AuthorizeUtil();
@@ -45,28 +45,11 @@ public class UploadVideos {
 
 			youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential).setApplicationName("youtube-cmdline-uploadvideo-sample").build();
 
-			// arquivo
-			FileUtil fileUtil = new FileUtil();
-			File videoFile = fileUtil.getVideoFromUser();
-			
-			//Status
-			StatusVideo statusVideo = new StatusVideo();
-			Video videoObjectDefiningMetadata = statusVideo.addStatusVideo();
-
-			VideoSnippet snippet = new VideoSnippet();
-			
-			// titulo e descrição
-			TituloDescricao atituloDescricao = new TituloDescricao();			
-			snippet = atituloDescricao.addTituloDescricaoVideo(snippet);
-												
-			//Tags
-			TagsVideos tagsVideos = new TagsVideos();
-			snippet = tagsVideos.addTags(snippet);
-
 			videoObjectDefiningMetadata.setSnippet(snippet);
 
-			InputStreamContent mediaContent = new InputStreamContent(VIDEO_FILE_FORMAT,new BufferedInputStream(new FileInputStream(videoFile)));
-			mediaContent.setLength(videoFile.length());
+			InputStreamContent mediaContent = new InputStreamContent(VIDEO_FILE_FORMAT,new BufferedInputStream(new FileInputStream(fileVideo)));
+
+			mediaContent.setLength(fileVideo.length());			
 
 			YouTube.Videos.Insert videoInsert = youtube.videos().insert("snippet,statistics,status",videoObjectDefiningMetadata, mediaContent);
 
@@ -98,20 +81,7 @@ public class UploadVideos {
 			};
 			uploader.setProgressListener(progressListener);
 
-			Video returnedVideo = videoInsert.execute();
-
-			System.out.println("\n================== Returned Video ==================\n");
-			System.out.println("  - Id: " + returnedVideo.getId());
-			System.out.println("  - Title: " + returnedVideo.getSnippet().getTitle());
-			System.out.println("  - Tags: " + returnedVideo.getSnippet().getTags());
-			System.out.println("  - Privacy Status: " + returnedVideo.getStatus().getPrivacyStatus());
-			System.out.println("  - Video Count: " + returnedVideo.getStatistics().getViewCount());
-			
-			PlaylistVideo playlistVideo = new PlaylistVideo();
-			
-			Playlist playlist = playlistVideo.criaPlayList(youtube);
-			
-			playlistVideo.addVideoNaPayList(playlist.getId(), returnedVideo.getId());		
+			return videoInsert.execute();
 
 		} catch (GoogleJsonResponseException e) {
 			System.err.println("GoogleJsonResponseException code: " + e.getDetails().getCode() + " : "
@@ -124,5 +94,19 @@ public class UploadVideos {
 			System.err.println("Throwable: " + t.getMessage());
 			t.printStackTrace();
 		}
+		return null;
+	}
+
+	public File preparaVideo() {
+
+		try {
+			FileUtil fileUtil = new FileUtil();
+			return fileUtil.getVideoFromUser();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.google.api.services.youtube.model.VideoSnippet;
 
-public class TagsVideos {
+public class TagsService {
 
 	public VideoSnippet addTags(VideoSnippet snippet) {
 

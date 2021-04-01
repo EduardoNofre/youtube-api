@@ -16,13 +16,13 @@ import com.google.api.services.youtube.YouTube.Thumbnails.Set;
 import com.google.api.services.youtube.model.ThumbnailListResponse;
 
 
-public class UploadThumbnail { 
+public class ThumbnailService { 
 
 	private YouTube youtube;
 
 	private static final String IMAGE_FILE_FORMAT = "image/png";
 
-	public void addThumbNail(String idVideo) {
+	public void addThumbNailVideo(String idVideo) {
 
 		File imageFile;
 		try {

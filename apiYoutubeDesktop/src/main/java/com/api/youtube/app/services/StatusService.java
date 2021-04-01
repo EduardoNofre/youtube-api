@@ -4,8 +4,7 @@ import com.api.youtube.app.enums.StatusEnum;
 import com.google.api.services.youtube.model.Video;
 import com.google.api.services.youtube.model.VideoStatus;
 
-public class StatusVideo {
-
+public class StatusService {
 	
 	public Video addStatusVideo() {
 		

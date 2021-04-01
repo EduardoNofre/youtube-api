@@ -5,7 +5,7 @@ import java.util.Calendar;
 import com.api.youtube.app.dto.TituloDescricaoModel;
 import com.google.api.services.youtube.model.VideoSnippet;
 
-public class TituloDescricao {
+public class TituloDescricaoService {
 
 	public VideoSnippet addTituloDescricaoVideo(VideoSnippet snippet) {
 
