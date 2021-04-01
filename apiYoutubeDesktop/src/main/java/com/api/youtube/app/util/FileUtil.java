@@ -38,21 +38,22 @@ public class FileUtil {
 
 	private  File[] getLocalVideoFiles() throws IOException {
 
-		File currentDirectory = new File("C:\\Users\\nofre\\OneDrive\\¡rea de Trabalho\\locos\\Podcast\\Podcast - VenusPodCast\\04 - VIVI FERNANDEZ\\corte");
+		File currentDirectory = new File("C:\\Users\\nofre\\OneDrive\\√Årea de Trabalho\\locos\\Podcast\\Podcast - VenusPodCast\\04 - VIVI FERNANDEZ\\corte");
 		System.out.println("Video files from " + currentDirectory.getAbsolutePath() + ":");
 
 		// Filters out video files. This list of video extensions is not comprehensive.
-		FilenameFilter videoFilter = new FilenameFilter() {
-			public boolean accept(File dir, String name) {
-				String lowercaseName = name.toLowerCase();
-				if (lowercaseName.endsWith(".webm") || lowercaseName.endsWith(".flv") || lowercaseName.endsWith(".f4v")
-						|| lowercaseName.endsWith(".mov") || lowercaseName.endsWith(".mp4")) {
-					return true;
-				} else {
-					return false;
-				}
-			}
-		};
+	    FilenameFilter videoFilter = new FilenameFilter() {
+		      public boolean accept(File dir, String name) {
+		        String lowercaseName = name.toLowerCase();
+		        if (lowercaseName.endsWith(".webm") || lowercaseName.endsWith(".flv")
+		            || lowercaseName.endsWith(".f4v") || lowercaseName.endsWith(".mov")
+		            || lowercaseName.endsWith(".mp4")) {
+		          return true;
+		        } else {
+		          return false;
+		        }
+		      }
+		    };
 		return currentDirectory.listFiles(videoFilter);
 	}
 

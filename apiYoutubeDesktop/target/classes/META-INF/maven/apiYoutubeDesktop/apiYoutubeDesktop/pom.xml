@@ -14,9 +14,9 @@
 	<name>apiYoutube</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<project.youtube.version>v3-rev24-1.13.2-beta</project.youtube.version>
-		<project.http.version>1.13.1-beta</project.http.version>
-		<project.oauth.version>1.13.1-beta</project.oauth.version>
+		<project.youtube.version>v3-rev56-1.15.0-rc</project.youtube.version>
+		<project.http.version>1.15.0-rc</project.http.version>
+		<project.oauth.version>1.15.0-rc</project.oauth.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -40,12 +40,19 @@
 			<artifactId>google-http-client-jackson2</artifactId>
 			<version>${project.http.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.google.oauth-client</groupId>
 			<artifactId>google-oauth-client-jetty</artifactId>
 			<version>${project.oauth.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.google.collections</groupId>
+			<artifactId>google-collections</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 	</dependencies>
 
 
@@ -60,7 +67,7 @@
 					<mainClass>com.google.api.services.samples.youtube.cmdline.youtube_cmdline_uploadvideo_sample.UploadVideo</mainClass>
 				</configuration>
 			</plugin>
-			
+
 			<!-- Forces Maven to use Java 1.6 -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

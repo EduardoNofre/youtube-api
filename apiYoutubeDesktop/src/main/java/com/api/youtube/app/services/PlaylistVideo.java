@@ -55,7 +55,7 @@ public class PlaylistVideo {
 			PlaylistItem playlistItem = new PlaylistItem();
 			playlistItem.setSnippet(playlistItemSnippet);
 
-			YouTube.PlaylistItems.Insert playlistItemsInsertCommand = youtube.playlistItems().insert("snippet,contentDetails", playlistItem);
+			YouTube.PlaylistItems. Insert playlistItemsInsertCommand = youtube.playlistItems().insert("snippet,contentDetails", playlistItem);
 			returnedPlaylistItem = playlistItemsInsertCommand.execute();
 
 			System.out.println("New PlaylistItem name: " + returnedPlaylistItem.getSnippet().getTitle());

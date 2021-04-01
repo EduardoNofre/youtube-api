@@ -1,5 +1,8 @@
 package com.api.youtube.app;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.api.youtube.app.services.UploadVideos;
 
 public class Principal {
@@ -9,7 +12,8 @@ public class Principal {
 	
 
 	public static void main(String[] args) throws Exception {
-		System.out.println("Inicio");
+		
+		System.out.println("Inicio " + new SimpleDateFormat("dd/MM/yyyy HH:MM:ss").format(new Date()));
 	
 		up.uploadVideos();
 		
@@ -18,6 +22,4 @@ public class Principal {
 //		System.out.println(c.getExpirationTimeMilliseconds());
 	}
 	
-
-
 }

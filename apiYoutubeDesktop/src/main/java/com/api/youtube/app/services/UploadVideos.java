@@ -31,7 +31,7 @@ public class UploadVideos {
 	private final JsonFactory JSON_FACTORY = new JacksonFactory();
 
 	private YouTube youtube;
-
+	
 	private String VIDEO_FILE_FORMAT = "video/*";
 
 	public void uploadVideos() throws Exception {
@@ -55,10 +55,10 @@ public class UploadVideos {
 
 			VideoSnippet snippet = new VideoSnippet();
 			
-			// titulo e descrição
+			// titulo e descriÃ§Ã£o
 			TituloDescricao atituloDescricao = new TituloDescricao();			
 			snippet = atituloDescricao.addTituloDescricaoVideo(snippet);
-			
+												
 			//Tags
 			TagsVideos tagsVideos = new TagsVideos();
 			snippet = tagsVideos.addTags(snippet);
@@ -111,8 +111,7 @@ public class UploadVideos {
 			
 			Playlist playlist = playlistVideo.criaPlayList(youtube);
 			
-			playlistVideo.addVideoNaPayList(playlist.getId(), returnedVideo.getId());
-			
+			playlistVideo.addVideoNaPayList(playlist.getId(), returnedVideo.getId());		
 
 		} catch (GoogleJsonResponseException e) {
 			System.err.println("GoogleJsonResponseException code: " + e.getDetails().getCode() + " : "

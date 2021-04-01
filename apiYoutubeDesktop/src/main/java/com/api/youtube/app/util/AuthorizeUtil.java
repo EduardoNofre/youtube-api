@@ -1,6 +1,7 @@
 package com.api.youtube.app.util;
 
 import java.io.File;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -22,7 +23,7 @@ public class AuthorizeUtil {
 
 	public Credential authorize(List<String> scopes,String servicoTipoJsonCredential ) throws Exception {
 
-		 GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, AuthorizeUtil.class.getResourceAsStream("/client_secrets.json"));
+		 GoogleClientSecrets clientSecrets = GoogleClientSecrets. load(JSON_FACTORY,new InputStreamReader(AuthorizeUtil.class.getResourceAsStream("/client_secrets.json")));
 
 		// Checks that the defaults have been replaced (Default = "Enter X here").
 		if (clientSecrets.getDetails().getClientId().startsWith("Enter") || clientSecrets.getDetails().getClientSecret().startsWith("Enter ")) {
