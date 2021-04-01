@@ -16,7 +16,7 @@ import com.google.api.services.youtube.YouTube.Thumbnails.Set;
 import com.google.api.services.youtube.model.ThumbnailListResponse;
 
 
-public class UploadThumbnail {
+public class UploadThumbnail { 
 
 	private YouTube youtube;
 
