@@ -26,7 +26,7 @@ public class Principal {
 	}
 
 	public static void montagemDadosVideoParaUpload() throws Exception {
-
+		
 		VideoService videoService = new VideoService();
 		File fileVideo = videoService.preparaVideo();
 
@@ -45,6 +45,7 @@ public class Principal {
 			TagsService tagsService = new TagsService();
 			snippet = tagsService.addTags(snippet);
 
+			// Subir o video
 			Video dadosVideo = videoService.uploadVideo(fileVideo, videoObjectDefiningMetadata, snippet);
 
 			if (dadosVideo != null) {
@@ -59,7 +60,13 @@ public class Principal {
 
 					ThumbnailService.addThumbNailVideo(dadosVideo.getId());
 				}
+			}else {
+
+				System.out.println(" Erro ao fazer o upload do video");
 			}
+		}else {
+
+			System.out.println(" Verifique o arquivo \n Arquivo existe \n formato valido");
 		}
 	}
 }

@@ -34,7 +34,7 @@ public class PlaylistService {
 		
 		AuthorizeUtil authorizeUtil = new AuthorizeUtil();
 
-		List<String> scopes = Lists.newArrayList(ServicesApiYoutubeEnum.youtubeplayList.getServiceYoutubeDescricao());
+		List<String> scopes = Lists.newArrayList(ServicesApiYoutubeEnum.youtubeAuht.getServiceYoutubeDescricao());
 
 		try {
 
@@ -77,7 +77,7 @@ public class PlaylistService {
 		AuthorizeUtil authorizeUtil = new AuthorizeUtil();
 		Playlist playlist = null;
 
-		List<String> scopes = Lists.newArrayList(ServicesApiYoutubeEnum.youtubeplayList.getServiceYoutubeDescricao());
+		List<String> scopes = Lists.newArrayList(ServicesApiYoutubeEnum.youtubeAuht.getServiceYoutubeDescricao());
 
 		try {
 

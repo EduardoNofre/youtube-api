@@ -19,7 +19,6 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
-import com.google.api.services.youtube.model.Playlist;
 import com.google.api.services.youtube.model.Video;
 import com.google.api.services.youtube.model.VideoSnippet;
 import com.google.common.collect.Lists;
@@ -36,10 +35,11 @@ public class VideoService {
 
 	public Video uploadVideo(File fileVideo, Video videoObjectDefiningMetadata,VideoSnippet snippet) throws Exception {
 
+		AuthorizeUtil authorizeUtil = new AuthorizeUtil();
+		
 		try {
-			AuthorizeUtil authorizeUtil = new AuthorizeUtil();
 
-			List<String> scopes = Lists.newArrayList(ServicesApiYoutubeEnum.youtubeUpload.getServiceYoutubeDescricao());
+			List<String> scopes = Lists.newArrayList(ServicesApiYoutubeEnum.youtubeAuht.getServiceYoutubeDescricao());
 
 			Credential credential = authorizeUtil.authorize(scopes,ServicesApiYoutubeEnum.youtubeUploadJsonCredential.getServiceYoutubeDescricao());
 
